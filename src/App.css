@@ -50,7 +50,7 @@ input {
   box-shadow: inset 0px 0px 10px 3px #ddd;
 }
 
-input:focus {
+input:focus, input:hover {
   outline: none;
 }
 
@@ -66,12 +66,32 @@ h4, .no-record{
   align-items: center;
   margin: 0 auto;
   flex-direction: column;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 20px 0px 20px;
 }
 
 .row{
   display: flex;
+  width: 100%;
+  justify-content: center;
   margin: 10px 0px;
+}
+
+.icon{
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.return{
+  margin-right: 5px;
+}
+.favorites{
+  margin-left: 5px;
+}
+
+.icon:hover{
+  color: orange;
 }
 
 .col{

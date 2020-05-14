@@ -16,7 +16,7 @@ function createWindow(){
             nodeIntegration: true,
         }    
     });
-    
+
     mainWindow.setMenuBarVisibility(false);
 
     mainWindow.loadURL("http://localhost:3000");
