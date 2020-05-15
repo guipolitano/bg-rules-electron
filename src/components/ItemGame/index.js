@@ -7,11 +7,10 @@ import { findElement } from "../../util";
 
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 
-function ItemRule({
+function ItemGame({
   img,
-  game,
-  id,
   type,
+  game,
   url,
   name,
   onClick,
@@ -37,7 +36,6 @@ function ItemRule({
           {
             url,
             name,
-            id,
             img,
             type,
             game,
@@ -67,16 +65,15 @@ function ItemRule({
       ]}
     >
       <AntdItem.Meta
-        avatar={<img style={{width: "75px"}} src={img} alt="board" />}
+        avatar={<img style={{ width: "75px" }} src={img} alt="board" />}
         title={
           <a href="/#" onClick={onClick}>
             {name}
           </a>
         }
-        description={<span>{game}</span>}
       />
     </AntdItem>
   );
 }
 
-export default ItemRule;
+export default ItemGame;

@@ -1,7 +1,5 @@
 export const checkFavorites = (data, type) => {
-  const favorites = localStorage.getItem("favorites")
-    ? JSON.parse(localStorage.getItem("favorites"))
-    : [];
+  const favorites = getStorage();
   data.map((e) => {
     if(favorites.length > 0){
       e.favorite = false;
@@ -28,3 +26,5 @@ export const findElement = (arr, propName, propValue) => {
 
   // will return undefined if not found; you could return a default instead
 }
+
+export const getStorage = () => localStorage.getItem("favorites") ? JSON.parse(localStorage.getItem("favorites")) : [];
