@@ -28,3 +28,5 @@ export const findElement = (arr, propName, propValue) => {
 }
 
 export const getStorage = () => localStorage.getItem("favorites") ? JSON.parse(localStorage.getItem("favorites")) : [];
+
+export const getStorageCookie = () => localStorage.getItem("cookie");

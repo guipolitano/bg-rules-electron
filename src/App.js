@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 import Tabs from "antd/es/tabs";
 import "antd/es/tabs/style/css";
 
 import Search from "./components/Search";
 import Favorites from "./components/Favorites";
-import { checkFavorites, getStorage  } from "./util";
+import Login from "./components/Login";
+import { checkFavorites, getStorage, getStorageCookie  } from "./util";
 
 import "./App.css";
+
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,8 +30,8 @@ function App() {
     setFavorites(getStorage());
   };
 
-  // const base_url = "https://bg-rules-crawler.herokuapp.com";
-  const base_url = "http://localhost:8080";
+  const base_url = "https://bg-rules-crawler.herokuapp.com";
+  // const base_url = "http://localhost:8080";
 
   const handleSearch = async (e) => {
     if (e.key === "Enter") {
@@ -55,8 +58,8 @@ function App() {
 
   const downloadPDF = async (e) => {
     setLoading(true);
-    const response = await axios.get(`${base_url}/pdf?id=${e}`);
-    window.open(response.data, "_blank");
+    const response = await axios.get(`${base_url}/pdf?id=${e}&cookie=${getStorageCookie()}`);
+    window.open(response.data, "pdf");
     setLoading(false);
   };
 
@@ -66,6 +69,7 @@ function App() {
       ".ant-tabs.ant-tabs-top.ant-tabs-line"
     ).scrollTop = 0;
   };
+
 
   return (
     <div className="container">
@@ -86,6 +90,7 @@ function App() {
         <Tabs.TabPane tab="FAVORITES" key="2">
           <Favorites
             setActiveKey={setActiveKey}
+            loading={loading}
             favorites={favorites}
             updateFav={updateFav}
             handleRules={handleRules}
@@ -93,7 +98,7 @@ function App() {
           />
         </Tabs.TabPane>
         <Tabs.TabPane tab="LOGIN" key="3">
-          Content of Tab Pane 3
+          <Login/>
         </Tabs.TabPane>
       </Tabs>
     </div>

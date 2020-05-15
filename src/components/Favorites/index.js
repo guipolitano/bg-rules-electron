@@ -9,10 +9,15 @@ import "antd/es/row/style/css";
 import Col from "antd/es/col/";
 import "antd/es/col/style/css";
 
+import Spin from "antd/es/spin/";
+import "antd/es/spin/style/css";
+
+import { LoadingOutlined } from "@ant-design/icons";
+
 import ItemFav from "../ItemFav";
 import { findElement } from "../../util";
 
-function Favorites({ favorites, updateFav, setActiveKey, handleRules, downloadPDF }) {
+function Favorites({ favorites, updateFav, setActiveKey, handleRules, downloadPDF, loading }) {
   const [list, setList] = useState([]);
 
   const unFav = (url) => {
@@ -43,14 +48,25 @@ function Favorites({ favorites, updateFav, setActiveKey, handleRules, downloadPD
     <div className="container">
       <Row gutter={[8, 8]}>
         <Col span={24} style={{ display: "flex" }}>
-          <List size="large">
-            {favorites && favorites.length === 0 ? (
-              <div>Nenhum favorito registrado</div>
-            ) : (
-              ""
-            )}
-            {list}
-          </List>
+          {loading ? (
+            <Spin
+              indicator={
+                <LoadingOutlined
+                  style={{ fontSize: 50, marginTop: "50px" }}
+                  spin
+                />
+              }
+            />
+          ) : (
+            <List size="large">
+              {favorites && favorites.length === 0 ? (
+                <div>Nenhum favorito registrado</div>
+              ) : (
+                ""
+              )}
+              {list}
+            </List>
+          )}
         </Col>
       </Row>
     </div>
