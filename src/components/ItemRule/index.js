@@ -69,7 +69,7 @@ function ItemRule({
       <AntdItem.Meta
         avatar={<img style={{width: "75px"}} src={img} alt="board" />}
         title={
-          <a href="/#" onClick={onClick}>
+          <a onClick={onClick}>
             {name}
           </a>
         }

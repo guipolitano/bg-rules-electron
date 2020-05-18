@@ -1,7 +1,7 @@
 {
   "name": "bg-rules-electron",
   "version": "0.1.0",
-  "main": "src/electron-start.js",
+  "main": "src/electron.js",
   "homepage": "./",
   "private": true,
   "build": {
@@ -27,7 +27,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "build-electron": "react-scripts build && cp ./src/electron.js ./build",
+    "package": "electron-builder build --win"
   },
   "eslintConfig": {
     "extends": "react-app"
